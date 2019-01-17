@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class AddTodo extends Component {
+class AddTodo extends Component {
   state = {
     title: ''
   };
@@ -35,7 +35,11 @@ export class AddTodo extends Component {
           type="submit"
           name="Add Todo"
           className="btn"
-          style={{ flex: '2', borderRadius: '0 0 5px 0' }}
+          style={{
+            flex: '2',
+            borderRadius: '0 0 5px 0',
+            textTransform: 'uppercase'
+          }}
         />
       </form>
     );
