@@ -1,28 +1,31 @@
-import React, { Component } from "react";
-import Todos from "./components/Todos";
-import "./App.css";
+import React, { Component } from 'react';
+import uuid from 'uuid';
+import Header from './components/layout/Header';
+import AddTodo from './components/AddTodo';
+import Todos from './components/Todos';
+import './App.css';
 
 class App extends Component {
   state = {
     todos: [
       {
-        id: 1,
-        title: "Code for 30mins first thing in the morning.",
+        id: uuid.v4(),
+        title: 'Code for 30mins first thing in the morning.',
         isCompleted: false
       },
       {
-        id: 2,
-        title: "Work on a personal project after the first 30mins.",
+        id: uuid.v4(),
+        title: 'Work on a personal project after the first 30mins.',
         isCompleted: false
       },
       {
-        id: 3,
-        title: "Time to pray.So...pray!",
+        id: uuid.v4(),
+        title: 'Time to pray.So...pray!',
         isCompleted: false
       },
       {
-        id: 4,
-        title: "Surf the net for work.",
+        id: uuid.v4(),
+        title: 'Surf the net for work.',
         isCompleted: false
       }
     ]
@@ -48,15 +51,28 @@ class App extends Component {
     });
   };
 
+  // Add New Todo
+  addTodo = title => {
+    const newTodo = {
+      id: uuid.v4(),
+      title,
+      isCompleted: false
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
+
   render() {
     return (
-      <div className="App">
-        <h1>App</h1>
-        <Todos
-          todos={this.state.todos}
-          markComplete={this.markComplete}
-          delTodo={this.delTodo}
-        />
+      <div>
+        <Header />
+        <div className="container">
+          <AddTodo addTodo={this.addTodo} />
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            delTodo={this.delTodo}
+          />
+        </div>
       </div>
     );
   }
