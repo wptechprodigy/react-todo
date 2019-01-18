@@ -18,3 +18,21 @@ h1 {
   margin: 10px auto;
   text-align: center;
 }
+
+.container {
+  padding: 0 2rem;
+  border: "1px solid #333";
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #666;
+}

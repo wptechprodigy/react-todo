@@ -7,6 +7,7 @@ export class TodoItem extends Component {
       backgound: "#333",
       padding: "10px",
       borderBottom: "1px solid #ccc",
+      // opacity: 0.7,
       textDecoration: this.props.todo.isCompleted ? "line-through" : "none"
     };
   };
@@ -19,6 +20,7 @@ export class TodoItem extends Component {
           <input
             type="checkbox"
             onChange={this.props.markComplete.bind(this, id)}
+            style={{ marginRight: "5px" }}
           />
           {title}
           <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>
