@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddTodo extends Component {
   state = {
     title: ''
   };
 
-  onSubmit = e => {
-    e.preventDefault();
+  onSubmit = event => {
+    event.preventDefault();
     this.props.addTodo(this.state.title);
     this.setState({ title: '' });
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = event =>
+    this.setState({ [event.target.name]: event.target.value });
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
+      <form onSubmit={this.onSubmit} style={formStyle}>
         <input
           type="text"
           name="title"
@@ -24,10 +26,11 @@ class AddTodo extends Component {
           onChange={this.onChange}
           style={{
             flex: '10',
-            borderRadius: '0 0 0 5px',
+            borderRadius: '5px 0 0 5px',
             padding: '5px 8px',
             lineHeight: '1rem',
-            fontSize: '1.1rem'
+            fontSize: '1.1rem',
+            border: '1px solid #888'
           }}
         />
 
@@ -37,7 +40,7 @@ class AddTodo extends Component {
           className="btn"
           style={{
             flex: '2',
-            borderRadius: '0 0 5px 0',
+            borderRadius: '0 5px 5px 0',
             textTransform: 'uppercase'
           }}
         />
@@ -45,5 +48,15 @@ class AddTodo extends Component {
     );
   }
 }
+
+const formStyle = {
+  display: 'flex',
+  boxShadow: '0px 0px 3px #111'
+};
+
+// PropTypes
+AddTodo.propTypes = {
+  AddTodo: PropTypes.func.isRequired
+};
 
 export default AddTodo;
